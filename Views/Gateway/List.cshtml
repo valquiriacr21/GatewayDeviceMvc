@@ -10,16 +10,8 @@
     <tbody>
 
         @foreach (var gateway in Model)
-        {
-            <tr>
-                <td>
-                    <a asp-controller="Gateway" asp-action="Details"
-                       asp-route-id="@gateway.SerialNumber">@gateway.Name</a>
-                </td>
-                <td>@gateway.IPV4</td>
-            </tr>
-
-
+        {  
+            <partial name="_GatewayCard" model=" gateway" />         
 
         }
     </tbody>

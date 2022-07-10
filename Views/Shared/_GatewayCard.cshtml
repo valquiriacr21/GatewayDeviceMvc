@@ -1,1 +1,8 @@
-﻿
+﻿@model Gateway
+<tr>
+    <td>
+        <a asp-controller="Gateway" asp-action="Details"
+           asp-route-id="@Model.SerialNumber">@Model.Name</a>
+    </td>
+    <td>@Model.IPV4</td>
+</tr>
