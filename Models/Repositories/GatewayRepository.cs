@@ -16,10 +16,12 @@ namespace GatewayDeviceMvc.Models.Repositories
             _appDbContext = appDbContext;
         }
 
-        IEnumerable<Gateway> AllGateways()
+        public IEnumerable<Gateway> AllGateways
         {
-
-            return _appDbContext.Gateways.Include(x => x.Devices);
+            get
+            {
+                return _appDbContext.Gateways.Include(x => x.Devices);
+            }
 
         }
 

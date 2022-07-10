@@ -1,4 +1,5 @@
 using GatewayDeviceMvc.Models;
+using GatewayDeviceMvc.Models.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -27,6 +28,8 @@ namespace GatewayDeviceMvc
         {
             services.AddDbContext<AppDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddScoped<IGatewayRepository, GatewayRepository>();
+            services.AddScoped<IDeviceRepository, DeviceRepository>();
             services.AddControllersWithViews();
         }
 

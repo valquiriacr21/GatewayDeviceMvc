@@ -1,0 +1,26 @@
+﻿@model IEnumerable<Gateway>
+<h1>List of all Gateways</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">IPV4</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var gateway in Model)
+        {
+            <tr>
+                <td>
+                    <a asp-controller="Gateway" asp-action="Details"
+                       asp-route-id="@gateway.SerialNumber">@gateway.Name</a>
+                </td>
+                <td>@gateway.IPV4</td>
+            </tr>
+
+
+
+        }
+    </tbody>
+</table>
