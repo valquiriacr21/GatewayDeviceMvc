@@ -1,5 +1,35 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model Gateway
+
+
+<div>
+    <h1>Details gateway: @Model.Name</h1>
+    <h3>IP :@Model.IPV4</h3> 
+</div>
+<div>
+    <h3>List of connected devices</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Vendor</th>
+                <th scope="col">DateCreated</th>
+                <th scope="col">Status</th>
+                <th scope="col">GatewaySerialNumber</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var device in Model.Devices)
+            {
+                <tr>
+                    <td>@device.Vendor</td>
+                    <td>@device.DateCreated</td>
+                    <td>@device.Status</td>
+                    <td>@device.GatewaySerialNumber</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.SerialNumber">Edit</a>
+    <a asp-action="List">Back to List</a>
+</div>

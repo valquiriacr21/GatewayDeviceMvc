@@ -33,5 +33,69 @@ namespace GatewayDeviceMvc.Controllers
 
             return View(gateways);
         }
+
+        //GET:Gateway/Details/5
+        public IActionResult Details(int id)
+        {  
+            var gateway = _gatewayRepository.GetGatewayById(id);
+            if (gateway==null)
+            {
+                return NotFound();
+            }
+            return View(gateway);
+        }
+
+        //Get:Gateway/Edit/5
+        public  IActionResult Edit(int id)
+        {
+          
+            var gateway = _gatewayRepository.GetGatewayById(id);
+            if (gateway==null)
+            {
+                return NotFound();
+            }
+            return View(gateway);
+        }
+        [HttpPost]
+        public IActionResult Edit(int id,[Bind("SerialNumber,Name,IPV4")] Gateway gateway)
+        {
+            if (id != gateway.SerialNumber)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                _gatewayRepository.UpdateGateway(gateway);
+                return RedirectToAction(nameof(List));
+            }
+            return View(gateway);
+        }
+
+        //GET:Gateway/Delete/5
+        public IActionResult Delete(int id)
+        {
+            var gateway = _gatewayRepository.GetGatewayById(id);
+            if (gateway==null)
+            {
+                return NotFound();
+            }
+            return View(gateway);
+        }
+
+        //POST:Gateway/Delete/5
+        [HttpPost,ActionName("Delete")]
+        public IActionResult DeleteConfirmed(int id)
+        {
+            var gateway = _gatewayRepository.GetGatewayById(id);
+            if (gateway == null)
+            {
+                return NotFound();
+            }
+            _gatewayRepository.DeleteGateway(gateway);
+            return RedirectToAction(nameof(List));
+        }
+
+
     }
 }

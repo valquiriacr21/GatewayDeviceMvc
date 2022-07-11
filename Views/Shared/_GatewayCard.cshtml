@@ -5,4 +5,9 @@
            asp-route-id="@Model.SerialNumber">@Model.Name</a>
     </td>
     <td>@Model.IPV4</td>
+    <td>
+        <a asp-action="Edit" asp-route-id="@Model.SerialNumber">Edit</a>
+        <a asp-action="Details" asp-route-id="@Model.SerialNumber">Details</a>
+        <a asp-action="Delete" asp-route-id="@Model.SerialNumber">Delete</a>
+    </td>
 </tr>
