@@ -14,10 +14,8 @@ namespace GatewayDeviceMvc.Models.Repositories
             _appDbContext = appDbContext;
         }
 
-        IEnumerable<Device> AllDevices()
-        {
-            return _appDbContext.Devices;
-        }
+        public IEnumerable<Device> AllDevices => _appDbContext.Devices;
+       
 
         public Device GetDeviceById(int dId)
         {

@@ -41,6 +41,7 @@ namespace GatewayDeviceMvc
             services.AddScoped<IGatewayRepository, GatewayRepository>();
             services.AddScoped<IDeviceRepository, DeviceRepository>();
             services.AddControllersWithViews();
+            services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -69,6 +70,7 @@ namespace GatewayDeviceMvc
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
             });
         }
     }

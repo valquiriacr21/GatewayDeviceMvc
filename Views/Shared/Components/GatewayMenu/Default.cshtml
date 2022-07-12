@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Gateway>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" asp-controller="Gateway" asp-action="List" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
+            Gateways
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+             @foreach (var gateway in Model)
+            {
+                <li>
+                    <a asp-controller="Gateway" asp-action="Details"
+                       asp-route-id="@gateway.SerialNumber">@gateway.Name</a>
+                </li>
+            }            
+            <li><hr class="dropdown-divider"></li>
+            <li>
+            <a class="dropdown-item" a asp-controller="Gateway" asp-action="List" asp-route-name="">View all gateways</a>
+            </li>
+        </ul>
+    </li>
+
+
+
+
+    @*<li class="nav-item dropdown">
+        <a asp-controller="Gateway" asp-action="List"
+           class="dropdown-menu" data-toggle="dropdown">Gateways<b class="caret"></b></a>
+        <ul class="dropdown-menu">
+            @foreach (var gateway in Model)
+            {
+                <li>
+                    <a asp-controller="Gateway" asp-action="List">@gateway.Name</a>
+                </li>
+            }
+            <li class="divider"></li>
+            <li>
+                <a asp-controller="Gateway" asp-action="List">View all gateways</a>
+            </li>
+        </ul>
+
+    </li>*@
+

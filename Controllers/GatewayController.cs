@@ -6,9 +6,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Text.Encodings.Web;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GatewayDeviceMvc.Controllers
 {
+    [Authorize]
     public class GatewayController : Controller
     {
         private readonly IGatewayRepository _gatewayRepository;

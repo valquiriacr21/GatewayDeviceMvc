@@ -1,0 +1,15 @@
+﻿@model Device
+<tr>
+    <td>
+        <a asp-controller="Device" asp-action="Details"
+           asp-route-id="@Model.UID">@Model.Vendor</a>
+    </td>
+    <td>@Model.DateCreated</td>
+    <td>@Model.Status</td>
+    <td>@Model.GatewaySerialNumber</td>
+    <td>
+        <a asp-action="Edit" asp-route-id="@Model.UID">Edit</a>
+        <a asp-action="Details" asp-route-id="@Model.UID">Details</a>
+        <a asp-action="Delete" asp-route-id="@Model.UID">Delete</a>
+    </td>
+</tr>
