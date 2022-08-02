@@ -37,7 +37,7 @@ namespace GatewayDeviceMvc.Controllers
         }
 
         //GET:Gateway/Details/5
-        public IActionResult Details(int id)
+        public IActionResult Details(string id)
         {  
             var gateway = _gatewayRepository.GetGatewayById(id);
             if (gateway==null)
@@ -48,7 +48,7 @@ namespace GatewayDeviceMvc.Controllers
         }
 
         //Get:Gateway/Edit/5
-        public  IActionResult Edit(int id)
+        public  IActionResult Edit(string id)
         {
           
             var gateway = _gatewayRepository.GetGatewayById(id);
@@ -59,7 +59,7 @@ namespace GatewayDeviceMvc.Controllers
             return View(gateway);
         }
         [HttpPost]
-        public IActionResult Edit(int id,[Bind("SerialNumber,Name,IPV4")] Gateway gateway)
+        public IActionResult Edit(string id,[Bind("SerialNumber,Name,IPV4")] Gateway gateway)
         {
             if (id != gateway.SerialNumber)
             {
@@ -75,7 +75,7 @@ namespace GatewayDeviceMvc.Controllers
         }
 
         //GET:Gateway/Delete/5
-        public IActionResult Delete(int id)
+        public IActionResult Delete(string id)
         {
             var gateway = _gatewayRepository.GetGatewayById(id);
             if (gateway==null)
@@ -87,7 +87,7 @@ namespace GatewayDeviceMvc.Controllers
 
         //POST:Gateway/Delete/5
         [HttpPost,ActionName("Delete")]
-        public IActionResult DeleteConfirmed(int id)
+        public IActionResult DeleteConfirmed(string id)
         {
             var gateway = _gatewayRepository.GetGatewayById(id);
             if (gateway == null)

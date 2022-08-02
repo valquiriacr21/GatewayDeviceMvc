@@ -11,14 +11,15 @@ namespace GatewayDeviceMvc.Models
     {
         [Key]
         //[BindNever]
-        public int SerialNumber { get; set; }
+        [StringLength(50)]
+        public string SerialNumber { get; set; }
         [Required(ErrorMessage = "Please enter the gateway's name")]
         [Display(Name = "Name")]
         [StringLength(10)]
         public string Name { get; set; }
         [Required(ErrorMessage = "Please enter the IPV4")]
         [Display(Name = "IPV4")]
-        [StringLength(12)]
+        [StringLength(15)]
         public string IPV4 { get; set; }
         public List<Device> Devices { get; set; }
 

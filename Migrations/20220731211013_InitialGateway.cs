@@ -2,7 +2,7 @@
 
 namespace GatewayDeviceMvc.Migrations
 {
-    public partial class AddLoginRegister : Migration
+    public partial class InitialGateway : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

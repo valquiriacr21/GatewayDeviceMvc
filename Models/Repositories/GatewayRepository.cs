@@ -25,7 +25,7 @@ namespace GatewayDeviceMvc.Models.Repositories
 
         }
 
-        public Gateway GetGatewayById(int gId)
+        public Gateway GetGatewayById(string gId)
         {
             return _appDbContext.Gateways.Include(g => g.Devices).FirstOrDefault(g => g.SerialNumber == gId);
         }

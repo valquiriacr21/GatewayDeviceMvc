@@ -8,7 +8,7 @@ namespace GatewayDeviceMvc.Models.Repositories
         IEnumerable<Gateway> AllGateways { get; }
         void CreateGateway(Gateway gateway);
         void DeleteGateway(Gateway gateway);
-        Gateway GetGatewayById(int gId);
+        Gateway GetGatewayById(string gId);
         void UpdateGateway(Gateway gateway);
     }
 }

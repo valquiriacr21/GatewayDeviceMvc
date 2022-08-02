@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GatewayDeviceMvc.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220710224321_AddLoginRegister")]
-    partial class AddLoginRegister
+    [Migration("20220731203225_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -31,14 +31,19 @@ namespace GatewayDeviceMvc.Migrations
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("GatewaySerialNumber")
-                        .HasColumnType("int");
+                    b.Property<string>("GatewaySerialNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Status")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
 
                     b.Property<string>("Vendor")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
 
                     b.HasKey("UID");
 
@@ -49,17 +54,19 @@ namespace GatewayDeviceMvc.Migrations
 
             modelBuilder.Entity("GatewayDeviceMvc.Models.Gateway", b =>
                 {
-                    b.Property<int>("SerialNumber")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("SerialNumber")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("IPV4")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
 
                     b.HasKey("SerialNumber");
 
@@ -264,11 +271,13 @@ namespace GatewayDeviceMvc.Migrations
 
             modelBuilder.Entity("GatewayDeviceMvc.Models.Device", b =>
                 {
-                    b.HasOne("GatewayDeviceMvc.Models.Gateway", null)
+                    b.HasOne("GatewayDeviceMvc.Models.Gateway", "Gateway")
                         .WithMany("Devices")
                         .HasForeignKey("GatewaySerialNumber")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Gateway");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
